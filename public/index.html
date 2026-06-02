@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SENDSupport — Letters That Get Results for Your Child</title>
+  <meta name="description" content="Write formal EHCP request and appeal letters that local authorities have to take seriously. Built for parents who are done being ignored." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #1c3a2e;
+      --forest-mid: #2a5240;
+      --forest-light: #3d7a5c;
+      --forest-pale: #e4ede8;
+      --forest-subtle: #f0f5f1;
+      --ivory: #faf8f3;
+      --ivory-dark: #f2ede2;
+      --ivory-deep: #e8e0ce;
+      --stone: #8c8578;
+      --stone-dark: #5c5548;
+      --ink: #1a1714;
+      --border: #ddd8cc;
+      --border-light: #ebe6da;
+      --white: #ffffff;
+      --error: #8b2020;
+      --error-bg: #fdf4f4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      padding: 0 2.5rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(250, 248, 243, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(221, 216, 204, 0.6);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--stone-dark); font-style: italic; }
+    .nav-cta {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--forest);
+      background: transparent;
+      border: 1px solid var(--forest);
+      border-radius: 100px;
+      padding: 8px 20px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--forest); color: var(--ivory); }
+
+    /* HERO - ASYMMETRIC SPLIT */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 68px;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem 6rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest-light);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--forest-light);
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 4.5vw, 64px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--forest-mid);
+    }
+    .hero-body {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--stone-dark);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-forest {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ivory);
+      background: var(--forest);
+      border: none;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-forest:hover { background: var(--forest-mid); }
+    .btn-forest:active { transform: scale(0.98); }
+    .btn-ghost {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--stone-dark);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--forest); }
+    .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+    .btn-ghost:hover::after { transform: translateX(3px); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--ivory) 0%, transparent 15%);
+      z-index: 1;
+    }
+    .hero-stat-pill {
+      position: absolute;
+      bottom: 3rem;
+      left: 2rem;
+      z-index: 3;
+      background: rgba(250, 248, 243, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      max-width: 240px;
+    }
+    .hero-stat-pill p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--forest);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat-pill span {
+      font-size: 12px;
+      color: var(--stone);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--forest);
+      padding: 1.25rem 6rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.02em;
+    }
+    .trust-item svg {
+      width: 16px;
+      height: 16px;
+      color: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+
+    /* EDITORIAL SECTION */
+    .editorial {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      min-height: 80vh;
+    }
+    .editorial-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .editorial-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .editorial-img-wrap:hover .editorial-img { transform: scale(1.03); }
+    .editorial-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 5rem 5rem 4rem;
+      background: var(--ivory-dark);
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--forest-light);
+      margin-bottom: 1.5rem;
+    }
+    .section-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 3vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .section-h2 em { font-style: italic; color: var(--forest-mid); }
+    .section-body {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--stone-dark);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+      max-width: 440px;
+    }
+    .legislation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .leg-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--stone-dark);
+      padding: 0.75rem 1rem;
+      background: var(--ivory);
+      border-radius: 10px;
+      border-left: 2px solid var(--forest-light);
+    }
+    .leg-item strong { color: var(--forest); font-weight: 600; display: block; margin-bottom: 1px; }
+
+    /* FORM SECTION */
+    .form-section {
+      padding: 7rem 6rem;
+      background: var(--ivory);
+    }
+    .form-section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+      align-items: end;
+    }
+    .form-header-right {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--stone-dark);
+      line-height: 1.85;
+    }
+
+    /* STEP TRACK */
+    .step-track {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-tab {
+      padding: 1rem 0;
+      margin-right: 2.5rem;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--stone);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .step-tab.active { color: var(--forest); border-bottom-color: var(--forest); }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 32px rgba(28, 58, 46, 0.06);
+    }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .step-intro {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .step-intro h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .step-intro p { font-size: 14px; font-weight: 300; color: var(--stone); line-height: 1.6; }
+
+    .field { margin-bottom: 1.4rem; }
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--stone-dark);
+      margin-bottom: 8px;
+    }
+    .field label .opt { font-weight: 300; text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--stone); }
+    .field input, .field textarea {
+      width: 100%;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--ivory-subtle, #faf8f3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: var(--forest-light);
+      background: var(--white);
+    }
+    .field textarea { min-height: 110px; resize: vertical; line-height: 1.7; }
+    .field .hint { font-size: 12px; font-weight: 300; color: var(--stone); margin-top: 6px; line-height: 1.5; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .btn-primary {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ivory);
+      background: var(--forest);
+      border: none;
+      border-radius: 100px;
+      padding: 13px 28px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { background: var(--forest-mid); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-back {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--stone);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 13px 24px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-back:hover { border-color: var(--stone-dark); color: var(--ink); }
+
+    /* LOADING */
+    .loading { display: none; }
+    .loading.visible { display: block; }
+    .loading-inner {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .loading-ring {
+      width: 44px; height: 44px;
+      margin: 0 auto 1.5rem;
+      border: 1.5px solid var(--border);
+      border-top-color: var(--forest);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-inner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .loading-inner p { font-size: 14px; font-weight: 300; color: var(--stone); line-height: 1.7; max-width: 360px; margin: 0 auto; }
+
+    /* RESULT */
+    .result-card { display: none; }
+    .result-card.visible { display: block; }
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--forest-subtle);
+      border-radius: 20px 20px 0 0;
+    }
+    .result-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .result-actions { display: flex; gap: 8px; }
+    .result-body-wrap {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-top: none;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+    }
+    .letter-body {
+      padding: 2rem 2.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink);
+      white-space: pre-wrap;
+    }
+
+    /* PAYWALL */
+    .paywall-blur {
+      max-height: 280px;
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+    }
+    .paywall-gate {
+      padding: 2.5rem;
+      text-align: center;
+      background: linear-gradient(to bottom, transparent, var(--ivory) 10%);
+      border-top: 1px solid var(--border-light);
+    }
+    .paywall-gate h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .paywall-gate p { font-size: 14px; font-weight: 300; color: var(--stone-dark); margin-bottom: 1.75rem; line-height: 1.7; max-width: 380px; margin-left: auto; margin-right: auto; }
+    .btn-unlock {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ivory);
+      background: var(--forest);
+      border: none;
+      border-radius: 100px;
+      padding: 15px 40px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-unlock:hover { background: var(--forest-mid); }
+    .btn-unlock:active { transform: scale(0.98); }
+    .secure-note {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--stone);
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .secure-note svg { width: 12px; height: 12px; }
+
+    .unlocked-body { display: none; }
+    .unlocked-body.visible { display: block; }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .copy-btn { color: var(--forest); background: var(--forest-pale); border: 1px solid var(--forest-pale); }
+    .copy-btn:hover { background: var(--forest); color: white; }
+    .regen-btn { color: var(--stone-dark); background: transparent; border: 1px solid var(--border); }
+    .regen-btn:hover { border-color: var(--stone-dark); }
+
+    .error-msg { display: none; background: var(--error-bg); color: var(--error); border-radius: 10px; padding: 12px 16px; font-size: 14px; font-weight: 300; margin-top: 1rem; }
+    .error-msg.visible { display: block; }
+
+    /* BENTO SECTION */
+    .bento-section {
+      padding: 7rem 6rem;
+      background: var(--ivory-dark);
+    }
+    .bento-header { margin-bottom: 3rem; }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.25rem;
+    }
+    .bento-cell {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bento-cell-a {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      background: var(--forest);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 280px;
+    }
+    .bento-cell-a-img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      opacity: 0.25;
+    }
+    .bento-cell-a-content { position: relative; z-index: 1; }
+    .bento-cell-a h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .bento-cell-a p { font-size: 14px; font-weight: 300; color: rgba(250,248,243,0.7); line-height: 1.7; max-width: 480px; }
+
+    .bento-cell-b {
+      grid-column: 3;
+      grid-row: 1;
+      background: var(--ivory);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--border-light);
+    }
+    .bento-cell-b .big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .bento-cell-b p { font-size: 13px; font-weight: 300; color: var(--stone-dark); line-height: 1.6; }
+
+    .bento-cell-c {
+      grid-column: 1;
+      grid-row: 2;
+      background: var(--ivory);
+      padding: 2rem;
+      border: 1px solid var(--border-light);
+    }
+    .bento-cell-c h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .bento-cell-c p { font-size: 13px; font-weight: 300; color: var(--stone-dark); line-height: 1.7; }
+
+    .bento-cell-d {
+      grid-column: 2 / 4;
+      grid-row: 2;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+    .bento-cell-d img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-cell-d:hover img { transform: scale(1.04); }
+    .bento-cell-d-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,58,46,0.75) 0%, transparent 60%);
+    }
+    .bento-cell-d-text {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      z-index: 1;
+    }
+    .bento-cell-d-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(250,248,243,0.9);
+      line-height: 1.4;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 7rem 6rem;
+      background: var(--ivory);
+    }
+    .testimonials-header { margin-bottom: 3.5rem; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      padding: 2rem;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+    .star { color: var(--forest-light); font-size: 14px; }
+    .testimonial-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .testimonial-attribution {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .attribution-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--forest-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--forest);
+      flex-shrink: 0;
+    }
+    .attribution-text { font-size: 13px; font-weight: 500; color: var(--ink); }
+    .attribution-text span { display: block; font-weight: 300; color: var(--stone); font-size: 12px; }
+
+    /* BOTTOM CTA */
+    .bottom-cta {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+    .bottom-cta-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .bottom-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(28,58,46,0.88) 0%, rgba(28,58,46,0.4) 100%);
+    }
+    .bottom-cta-content {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 6rem;
+      max-width: 580px;
+    }
+    .bottom-cta-content .section-label { color: rgba(255,255,255,0.5); }
+    .bottom-cta-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 500;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .bottom-cta-content p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(250,248,243,0.75);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 420px;
+    }
+    .btn-ivory {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--ivory);
+      border: none;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-ivory:hover { background: var(--white); }
+    .btn-ivory:active { transform: scale(0.98); }
+
+    /* LEGAL NOTE */
+    .legal-section {
+      padding: 3rem 6rem;
+      background: var(--ivory-dark);
+      border-top: 1px solid var(--border);
+    }
+    .legal-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      max-width: 760px;
+    }
+    .legal-inner svg { width: 18px; height: 18px; color: var(--forest-light); flex-shrink: 0; margin-top: 2px; }
+    .legal-inner p { font-size: 13px; font-weight: 300; color: var(--stone-dark); line-height: 1.75; }
+    .legal-inner p strong { color: var(--forest); font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      background: var(--forest);
+      padding: 3rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(250,248,243,0.9);
+      text-decoration: none;
+    }
+    .footer-logo span { font-style: italic; color: rgba(250,248,243,0.55); }
+    footer p { font-size: 13px; font-weight: 300; color: rgba(250,248,243,0.45); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 3rem 2rem; }
+      .hero-right { height: 50vw; min-height: 320px; }
+      .editorial { grid-template-columns: 1fr; }
+      .editorial-img-wrap { height: 60vw; }
+      .editorial-content { padding: 3rem 2rem; }
+      .form-section { padding: 4rem 2rem; }
+      .form-section-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .bento-section { padding: 4rem 2rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-cell-a { grid-column: 1; }
+      .bento-cell-b { grid-column: 1; }
+      .bento-cell-c { grid-column: 1; }
+      .bento-cell-d { grid-column: 1; min-height: 240px; }
+      .testimonials { padding: 4rem 2rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .trust-bar { padding: 1.25rem 2rem; gap: 1.5rem; }
+      .bottom-cta-content { padding: 4rem 2rem; }
+      .legal-section { padding: 2rem; }
+      footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">SEND<span>Support</span></a>
+  <a href="#write" class="nav-cta">Write your letter</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">EHCP Letters and Appeals</div>
+    <h1 class="hero-h1">Your child deserves<br>the right support.<br><em>This letter helps<br>get it.</em></h1>
+    <p class="hero-body">A formal, legally grounded letter to your local authority — citing the exact legislation they are obligated to follow. In minutes, not months.</p>
+    <div class="hero-actions">
+      <a href="#write" class="btn-forest">Write my letter</a>
+      <a href="#how" class="btn-ghost">How it works</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://picsum.photos/seed/parent-child-study/900/1000" alt="Parent working at desk with child" class="hero-img" />
+    <div class="hero-img-overlay"></div>
+    <div class="hero-stat-pill">
+      <p>1.6M</p>
+      <span>children with EHCPs in England. Most families fight alone.</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    Children and Families Act 2014
+  </div>
+  <div class="trust-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+    SEND Code of Practice 2015
+  </div>
+  <div class="trust-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+    Equality Act 2010
+  </div>
+  <div class="trust-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+    Secure payment via Stripe
+  </div>
+</div>
+
+<!-- EDITORIAL SPLIT -->
+<section class="editorial" id="how">
+  <div class="editorial-img-wrap">
+    <img src="https://picsum.photos/seed/family-meeting-school/800/900" alt="Family in meeting" class="editorial-img" />
+  </div>
+  <div class="editorial-content">
+    <p class="section-label">Why it works</p>
+    <h2 class="section-h2">Councils respond<br>differently when they<br>know <em>you know</em><br>the law.</h2>
+    <p class="section-body">A well-written letter that cites the exact sections of legislation the council is bound by changes the dynamic entirely. It signals that you are informed, that you mean business, and that ignoring you carries real consequences.</p>
+    <div class="legislation-list">
+      <div class="leg-item">
+        <div>
+          <strong>Children and Families Act 2014</strong>
+          Sections 36, 37, 42, 43, 44 - assessment duties and timescales
+        </div>
+      </div>
+      <div class="leg-item">
+        <div>
+          <strong>SEND Code of Practice 2015</strong>
+          Chapters 5, 6, 9 - identification, EHC plans, and tribunal rights
+        </div>
+      </div>
+      <div class="leg-item">
+        <div>
+          <strong>Equality Act 2010</strong>
+          Reasonable adjustments and the duty to avoid discrimination
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="form-section" id="write">
+  <div class="form-section-header">
+    <div>
+      <p class="section-label">Write your letter</p>
+      <h2 class="section-h2">Tell us your situation.<br><em>We write the letter.</em></h2>
+    </div>
+    <p class="form-header-right">Fill in three short sections about your child, what the council has done or failed to do, and what you need. Plain English is fine. We handle the legal language.</p>
+  </div>
+
+  <!-- STEP TRACK -->
+  <div class="step-track">
+    <div class="step-tab active" id="tab1" onclick="goToStep(1)">1. Your child</div>
+    <div class="step-tab" id="tab2" onclick="goToStep(2)">2. The situation</div>
+    <div class="step-tab" id="tab3" onclick="goToStep(3)">3. Your request</div>
+  </div>
+
+  <div class="form-card">
+    <!-- STEP 1 -->
+    <div class="form-step active" id="step1">
+      <div class="step-intro">
+        <h3>About your child</h3>
+        <p>This helps us personalise the letter so the council cannot claim they were not properly informed.</p>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label>Child's first name</label>
+          <input type="text" id="childName" placeholder="e.g. Amara" />
+        </div>
+        <div class="field">
+          <label>Child's age</label>
+          <input type="text" id="childAge" placeholder="e.g. 7" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Local Authority <span class="opt">(optional)</span></label>
+        <input type="text" id="localAuthority" placeholder="e.g. London Borough of Southwark" />
+      </div>
+      <div class="field">
+        <label>Diagnosis or suspected diagnosis <span class="opt">(optional)</span></label>
+        <input type="text" id="diagnosis" placeholder="e.g. Autism, ADHD, Dyslexia, or 'awaiting assessment'" />
+        <p class="hint">Include any formal diagnoses or suspected conditions. If no diagnosis yet, write "awaiting assessment".</p>
+      </div>
+      <div class="btn-row" style="justify-content: flex-end;">
+        <button class="btn-primary" onclick="goToStep(2)">Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="form-step" id="step2">
+      <div class="step-intro">
+        <h3>What has the council done — or failed to do?</h3>
+        <p>Be as specific as you can. Dates, decisions, and names of departments all strengthen the letter.</p>
+      </div>
+      <div class="field">
+        <label>Describe what happened</label>
+        <textarea id="councilAction" placeholder="e.g. We requested an EHC needs assessment in March 2024. The council refused in May 2024, stating our child did not meet the threshold. No educational psychologist report was commissioned..."></textarea>
+        <p class="hint">The more detail you provide, the stronger the letter. Do not worry about legal language.</p>
+      </div>
+      <div class="field">
+        <label>Relevant history <span class="opt">(optional)</span></label>
+        <textarea id="history" placeholder="e.g. We have been raising concerns with the school since September 2023..." style="min-height: 80px;"></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="goToStep(1)">Back</button>
+        <button class="btn-primary" onclick="goToStep(3)">Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="form-step" id="step3">
+      <div class="step-intro">
+        <h3>What are you asking for?</h3>
+        <p>State clearly what outcome you need. The letter will frame this as a formal request the council is legally obligated to consider.</p>
+      </div>
+      <div class="field">
+        <label>Your request</label>
+        <textarea id="parentRequest" placeholder="e.g. We are requesting that the council conducts a full EHC needs assessment for our child within the statutory 6-week timeframe..."></textarea>
+        <p class="hint">Common requests: EHC needs assessment, appeal against refusal, change of school placement, review of existing EHCP.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="goToStep(2)">Back</button>
+        <button class="btn-primary" id="generateBtn" onclick="generateLetter()">Generate my letter</button>
+      </div>
+      <div class="error-msg" id="errorMsg"></div>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" id="loading">
+    <div class="loading-inner">
+      <div class="loading-ring"></div>
+      <h3>Writing your letter...</h3>
+      <p>We are drafting a formal letter that references the specific legislation your local authority is bound by. This takes a moment to get right.</p>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <h2>Your letter is ready</h2>
+      <div class="result-actions">
+        <button class="action-btn regen-btn" id="regenBtn" onclick="regenerate()" style="display:none;">Regenerate</button>
+        <button class="action-btn copy-btn" id="copyBtn" onclick="copyLetter()" style="display:none;">Copy letter</button>
+      </div>
+    </div>
+    <div class="result-body-wrap">
+      <div id="paywallSection">
+        <div class="paywall-blur">
+          <div class="letter-body" id="letterPreview"></div>
+        </div>
+        <div class="paywall-gate">
+          <h3>Your letter is ready to send</h3>
+          <p>Unlock the full letter to copy, save and send to your local authority. One payment, yours to keep.</p>
+          <a id="unlockBtn" class="btn-unlock" href="YOUR_STRIPE_LINK_HERE" target="_blank" onclick="handleUnlock(event)">
+            Unlock for £8
+          </a>
+          <p class="secure-note">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            Secure payment via Stripe
+          </p>
+        </div>
+      </div>
+      <div class="unlocked-body" id="unlockedBody">
+        <div class="letter-body" id="unlockedLetter"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO SECTION -->
+<section class="bento-section">
+  <div class="bento-header">
+    <p class="section-label">How it works</p>
+    <h2 class="section-h2">From exhausted to<br><em>equipped.</em></h2>
+  </div>
+  <div class="bento-grid">
+    <div class="bento-cell bento-cell-a">
+      <img src="https://picsum.photos/seed/child-classroom-window/900/400" alt="" class="bento-cell-a-img" />
+      <div class="bento-cell-a-content">
+        <h3>Fill in your situation<br>in plain English.</h3>
+        <p>Three short sections. Your child's details, what the council has done, and what you need. No legal training required.</p>
+      </div>
+    </div>
+    <div class="bento-cell bento-cell-b">
+      <div>
+        <div class="big-num">£8</div>
+        <p>One letter. One payment. No subscription, no recurring charge.</p>
+      </div>
+      <a href="#write" class="btn-forest" style="text-align:center;">Start now</a>
+    </div>
+    <div class="bento-cell bento-cell-c">
+      <h4>The AI writes a letter councils have to take seriously.</h4>
+      <p>Formal language, correct statutory timeframes, and specific sections of legislation. The kind of letter that tells them you mean business.</p>
+    </div>
+    <div class="bento-cell bento-cell-d">
+      <img src="https://picsum.photos/seed/parent-letter-writing/800/400" alt="Parent writing a letter" />
+      <div class="bento-cell-d-overlay"></div>
+      <div class="bento-cell-d-text">
+        <p>"You should not need a law degree to fight for your child."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <p class="section-label">From parents</p>
+    <h2 class="section-h2">What a difference<br><em>the right words make.</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <blockquote>"The council had ignored us for eight months. Within two weeks of sending this letter, we had a formal response and an assessment date."</blockquote>
+      <div class="testimonial-attribution">
+        <div class="attribution-avatar">M</div>
+        <div class="attribution-text">Michelle O.
+          <span>Parent of a 9-year-old with autism</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <blockquote>"I had no idea what legislation to cite. This did it all for me. The school SENCo said she had never seen such a thorough letter from a parent."</blockquote>
+      <div class="testimonial-attribution">
+        <div class="attribution-avatar">D</div>
+        <div class="attribution-text">David T.
+          <span>Parent of a 6-year-old with ADHD</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <blockquote>"I have been fighting for three years. This was the first letter that felt like it came from someone who actually knew the system."</blockquote>
+      <div class="testimonial-attribution">
+        <div class="attribution-avatar">P</div>
+        <div class="attribution-text">Priya K.
+          <span>Parent of twins, both awaiting EHCP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <img src="https://picsum.photos/seed/mother-child-hopeful/1400/600" alt="Parent and child" class="bottom-cta-img" />
+  <div class="bottom-cta-overlay"></div>
+  <div class="bottom-cta-content">
+    <p class="section-label">Ready to start</p>
+    <h2>Stop being ignored.<br><em>Start being heard.</em></h2>
+    <p>Your child's needs are real. Your frustration is valid. A letter that speaks the right language can change what happens next.</p>
+    <a href="#write" class="btn-ivory">Write my letter for £8</a>
+  </div>
+</section>
+
+<!-- LEGAL NOTE -->
+<div class="legal-section">
+  <div class="legal-inner">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <p><strong>Important:</strong> SENDSupport generates letters based on the information you provide and references relevant legislation. It is not a substitute for qualified legal advice. For complex cases or tribunal proceedings, also consult a specialist SEND solicitor or your local SENDIASS service. That said, a well-written legislation-referencing letter is often the most powerful first step you can take.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">SEND<span>Support</span></a>
+  <p>Built for families who deserve to be heard. &copy; 2026 SENDSupport.</p>
+</footer>
+
+<script>
+  const STRIPE_LINK = 'YOUR_STRIPE_LINK_HERE';
+  let generatedLetter = '';
+  let letterId = '';
+  let currentStep = 1;
+
+  function goToStep(step) {
+    if (step === 2) {
+      if (!document.getElementById('childName').value.trim() || !document.getElementById('childAge').value.trim()) {
+        alert("Please enter your child's name and age to continue.");
+        return;
+      }
+    }
+    if (step === 3) {
+      if (!document.getElementById('councilAction').value.trim()) {
+        alert("Please describe what the council has done or failed to do.");
+        return;
+      }
+    }
+    document.getElementById('step' + currentStep).classList.remove('active');
+    document.getElementById('tab' + currentStep).classList.remove('active');
+    document.getElementById('step' + step).classList.add('active');
+    document.getElementById('tab' + step).classList.add('active');
+    currentStep = step;
+    document.getElementById('write').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function generateLetter() {
+    const childName = document.getElementById('childName').value.trim();
+    const childAge = document.getElementById('childAge').value.trim();
+    const localAuthority = document.getElementById('localAuthority').value.trim();
+    const diagnosis = document.getElementById('diagnosis').value.trim();
+    const councilAction = document.getElementById('councilAction').value.trim();
+    const history = document.getElementById('history').value.trim();
+    const parentRequest = document.getElementById('parentRequest').value.trim();
+    const errorMsg = document.getElementById('errorMsg');
+
+    errorMsg.classList.remove('visible');
+    if (!parentRequest) {
+      errorMsg.textContent = 'Please describe what you are requesting from the council.';
+      errorMsg.classList.add('visible');
+      return;
+    }
+
+    const btn = document.getElementById('generateBtn');
+    btn.disabled = true;
+    document.getElementById('form-card-wrap', document.querySelector('.form-card')).style && null;
+    document.querySelector('.form-card').style.display = 'none';
+    document.querySelector('.step-track').style.display = 'none';
+    document.getElementById('loading').classList.add('visible');
+    document.getElementById('resultCard').classList.remove('visible');
+    document.getElementById('paywallSection').style.display = 'block';
+    document.getElementById('unlockedBody').classList.remove('visible');
+    document.getElementById('copyBtn').style.display = 'none';
+    document.getElementById('regenBtn').style.display = 'none';
+
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ childName, childAge, localAuthority, diagnosis, councilAction, history, parentRequest })
+      });
+      const data = await response.json();
+      if (!data.letter) throw new Error(data.error || 'No letter generated');
+
+      generatedLetter = data.letter;
+      letterId = data.id;
+      document.getElementById('letterPreview').textContent = generatedLetter;
+      document.getElementById('loading').classList.remove('visible');
+      document.getElementById('resultCard').classList.add('visible');
+      document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) {
+      document.getElementById('loading').classList.remove('visible');
+      document.querySelector('.form-card').style.display = 'block';
+      document.querySelector('.step-track').style.display = 'flex';
+      errorMsg.textContent = 'Something went wrong generating your letter. Please try again.';
+      errorMsg.classList.add('visible');
+    }
+    btn.disabled = false;
+  }
+
+  function handleUnlock(e) {
+    if (STRIPE_LINK === 'YOUR_STRIPE_LINK_HERE') {
+      e.preventDefault();
+      unlockLetter();
+      return;
+    }
+    document.getElementById('unlockBtn').href = STRIPE_LINK + '?client_reference_id=' + letterId;
+  }
+
+  function unlockLetter() {
+    document.getElementById('paywallSection').style.display = 'none';
+    document.getElementById('unlockedLetter').textContent = generatedLetter;
+    document.getElementById('unlockedBody').classList.add('visible');
+    document.getElementById('copyBtn').style.display = 'inline-flex';
+    document.getElementById('regenBtn').style.display = 'inline-flex';
+  }
+
+  function copyLetter() {
+    navigator.clipboard.writeText(generatedLetter).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = 'Copy letter'; }, 2500);
+    });
+  }
+
+  function regenerate() {
+    document.getElementById('resultCard').classList.remove('visible');
+    document.querySelector('.form-card').style.display = 'block';
+    document.querySelector('.step-track').style.display = 'flex';
+    goToStep(1);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment') === 'success') {
+    const id = params.get('id');
+    if (id) {
+      fetch('/api/generate?id=' + id)
+        .then(r => r.json())
+        .then(data => {
+          if (data.letter) {
+            generatedLetter = data.letter;
+            document.querySelector('.form-card').style.display = 'none';
+            document.querySelector('.step-track').style.display = 'none';
+            document.getElementById('resultCard').classList.add('visible');
+            document.getElementById('paywallSection').style.display = 'none';
+            document.getElementById('unlockedLetter').textContent = generatedLetter;
+            document.getElementById('unlockedBody').classList.add('visible');
+            document.getElementById('copyBtn').style.display = 'inline-flex';
+            document.getElementById('regenBtn').style.display = 'inline-flex';
+            document.getElementById('write').scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+    }
+  }
+</script>
+</body>
+</html>
